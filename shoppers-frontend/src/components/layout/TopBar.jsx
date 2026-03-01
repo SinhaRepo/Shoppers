@@ -36,7 +36,7 @@ const TopBar = () => {
         <div className="flex items-center gap-2">
           {isAuthenticated ? (
             <>
-              <span className="text-text-primary font-medium">
+              <span className="text-text-primary font-medium truncate max-w-[80px] sm:max-w-[120px]">
                 {user.name}
               </span>
               <button

@@ -124,7 +124,7 @@ function App() {
           <CartDrawer />
           <ScrollToTop />
 
-          <div className="min-h-screen flex flex-col bg-bg-page">
+          <div className="min-h-screen flex flex-col bg-bg-page overflow-x-hidden w-full max-w-[100vw]">
             <TopBar />
             <Navbar />
             <main className="flex-1">

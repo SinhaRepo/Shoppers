@@ -81,7 +81,7 @@ const HeroBanner = () => {
         >
           {/* Left Panel — dark overlay with text */}
           <div className="w-full md:w-1/2 bg-[#1A1A2E] flex items-center relative z-10">
-            <div className="px-8 md:px-12 lg:px-16 py-8 max-w-lg">
+            <div className="px-4 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-8 max-w-lg">
               <motion.span
                 custom={0}
                 variants={textVariants}
@@ -93,7 +93,7 @@ const HeroBanner = () => {
               <motion.h1
                 custom={1}
                 variants={textVariants}
-                className="text-white text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-2"
+                className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-2"
               >
                 {slide.title}
               </motion.h1>
@@ -101,7 +101,7 @@ const HeroBanner = () => {
               <motion.h2
                 custom={2}
                 variants={textVariants}
-                className="text-white text-xl md:text-2xl lg:text-3xl font-bold mb-3"
+                className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3"
               >
                 {slide.subtitle}
               </motion.h2>

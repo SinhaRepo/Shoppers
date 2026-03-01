@@ -27,16 +27,16 @@ const FlashSale = ({ products = [] }) => {
     <section id="promotions" className="bg-white py-6">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5">
+        <div className="flex items-center justify-between mb-4 gap-2">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+            <div className="flex items-center gap-1.5 shrink-0">
               <Zap size={20} className="text-red-accent fill-red-accent" />
-              <h2 className="text-lg font-bold text-text-primary">Flash Sale</h2>
+              <h2 className="text-base sm:text-lg font-bold text-text-primary whitespace-nowrap">Flash Sale</h2>
             </div>
             <CountdownTimer />
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             <button
               onClick={() => scroll('left')}
               className="w-8 h-8 flex items-center justify-center rounded-full border border-border-card bg-white text-[#555555] hover:bg-warm-beige transition-colors"
