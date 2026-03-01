@@ -58,7 +58,7 @@ const FlashSale = ({ products = [] }) => {
           className="flex gap-4 overflow-x-auto no-scrollbar pb-2"
         >
           {flashProducts.map((product) => (
-            <div key={product.id} className="min-w-[160px] max-w-[160px] sm:min-w-[200px] sm:max-w-[200px] flex-shrink-0 h-auto">
+            <div key={product.id} className="min-w-[200px] max-w-[200px] flex-shrink-0 h-auto">
               <ProductCard product={product} compact />
             </div>
           ))}
