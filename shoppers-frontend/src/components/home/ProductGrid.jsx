@@ -51,12 +51,12 @@ const ProductGrid = ({ products = [] }) => {
         </h2>
 
         {/* Tab bar */}
-        <div className="flex items-center gap-1 border-b border-border-divider mb-6 overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-0.5 sm:gap-1 border-b border-border-divider mb-6 overflow-x-auto no-scrollbar">
           {TABS.map((tab, idx) => (
             <button
               key={tab.label}
               onClick={() => setActiveTab(idx)}
-              className={`relative px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-colors ${
+              className={`relative px-2.5 sm:px-4 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap transition-colors ${
                 idx === activeTab
                   ? 'text-red-accent'
                   : 'text-text-tab-inactive hover:text-text-primary'

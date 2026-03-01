@@ -38,15 +38,15 @@ const CategoryIcons = () => {
   return (
     <div className="bg-white border-y border-border-divider">
       <div className="max-w-7xl mx-auto px-4 py-5">
-        <div className="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-px-4 pb-1">
           {categories.map(({ label, Icon, keyword }) => (
             <motion.button
               key={label}
               onClick={() => handleClick(keyword)}
               whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center gap-2 min-w-[72px] group"
+              className="flex flex-col items-center gap-1.5 min-w-[60px] sm:min-w-[72px] group"
             >
-              <div className="w-14 h-14 rounded-full bg-bg-category border border-border-category flex items-center justify-center text-[#555555] group-hover:border-red-accent group-hover:text-red-accent transition-colors">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-bg-category border border-border-category flex items-center justify-center text-[#555555] group-hover:border-red-accent group-hover:text-red-accent transition-colors">
                 <Icon className="w-6 h-6" />
               </div>
               <span className="text-xs text-text-secondary group-hover:text-red-accent transition-colors whitespace-nowrap font-medium">
