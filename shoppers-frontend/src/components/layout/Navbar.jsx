@@ -32,9 +32,11 @@ const Navbar = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const searchRef = useRef(null);
+  const mobileSearchRef = useRef(null);
   const categoryRef = useRef(null);
   const userMenuRef = useRef(null);
   const debounceRef = useRef(null);
@@ -161,10 +163,10 @@ const Navbar = () => {
           </AnimatePresence>
         </div>
 
-        {/* Search bar */}
+        {/* Search bar — hidden on mobile, visible md+ */}
         <form
           onSubmit={handleSearch}
-          className="flex-1 max-w-xl relative"
+          className="hidden md:block flex-1 max-w-xl relative"
           ref={searchRef}
         >
           <div className="flex items-center border border-border-input rounded-lg bg-bg-input overflow-hidden focus-within:border-text-primary transition-colors">
@@ -221,6 +223,14 @@ const Navbar = () => {
 
         {/* Right icons */}
         <div className="flex items-center gap-3">
+          {/* Mobile search icon — visible only on mobile */}
+          <button
+            className="md:hidden text-[#555555] hover:text-text-primary transition-colors"
+            onClick={() => setShowMobileSearch(!showMobileSearch)}
+          >
+            <Search size={22} />
+          </button>
+
           {/* User menu */}
           <div className="relative" ref={userMenuRef}>
             {isAuthenticated ? (
@@ -309,6 +319,91 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
+
+      {/* Mobile search bar — expands below navbar */}
+      <AnimatePresence>
+        {showMobileSearch && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-white border-t border-border-divider overflow-hidden"
+          >
+            <form
+              onSubmit={(e) => {
+                handleSearch(e);
+                setShowMobileSearch(false);
+              }}
+              className="max-w-7xl mx-auto px-4 py-3 relative"
+              ref={mobileSearchRef}
+            >
+              <div className="flex items-center border border-border-input rounded-lg bg-bg-input overflow-hidden focus-within:border-text-primary transition-colors">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => handleSearchInput(e.target.value)}
+                  onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Escape') {
+                      setShowMobileSearch(false);
+                      setShowSuggestions(false);
+                    }
+                  }}
+                  placeholder="Search product or brand here..."
+                  className="flex-1 px-4 py-2.5 text-sm text-text-primary placeholder:text-text-placeholder bg-transparent outline-none"
+                  autoFocus
+                />
+                <button
+                  type="button"
+                  onClick={() => { setShowMobileSearch(false); setShowSuggestions(false); }}
+                  className="px-3 py-2.5 text-text-muted hover:text-text-primary transition-colors"
+                >
+                  <X size={18} />
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2.5 bg-btn-primary-bg text-btn-primary-text hover:bg-[#222222] transition-colors"
+                >
+                  <Search size={18} />
+                </button>
+              </div>
+
+              {/* Mobile search suggestions */}
+              <AnimatePresence>
+                {showSuggestions && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute left-4 right-4 top-full mt-1 bg-white rounded-xl border border-border-input shadow-card-hover py-2 z-50 max-h-64 overflow-y-auto"
+                  >
+                    {suggestions.map((product) => (
+                      <button
+                        key={product.id}
+                        onClick={() => {
+                          navigate(`/product/${product.id}`);
+                          setShowSuggestions(false);
+                          setShowMobileSearch(false);
+                          setSearchQuery('');
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-2 hover:bg-warm-beige transition-colors"
+                      >
+                        <div className="w-8 h-8 bg-bg-card-image rounded flex-shrink-0" />
+                        <div className="text-left">
+                          <p className="text-sm text-text-primary line-clamp-1">{product.name}</p>
+                          <p className="text-xs text-text-muted">{product.category}</p>
+                        </div>
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Mobile menu */}
       <AnimatePresence>
