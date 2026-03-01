@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/* ── Custom Font ───────────────────────────────────────────────── */
+@font-face {
+  font-family: 'BetaniaPatmos';
+  src: url('./assets/fonts/BetaniaPatmos.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Tailwind v4 Theme ─────────────────────────────────────────── */
+@theme {
+  /* Font families */
+  --font-sans: 'Open Sans', sans-serif;
+  --font-betania: 'BetaniaPatmos', serif;
+
+  /* Warm Neutral Palette */
+  --color-warm-white: #F9F8F6;
+  --color-warm-beige: #EFE9E3;
+  --color-warm-greige: #D9CFC7;
+  --color-warm-tan: #C9B59C;
+
+  /* Backgrounds */
+  --color-bg-page: #F9F8F6;
+  --color-bg-topbar: #EFE9E3;
+  --color-bg-navbar: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-bg-card-image: #EFE9E3;
+  --color-bg-category: #FFFFFF;
+  --color-bg-input: #FFFFFF;
+  --color-bg-footer: #1A1F2E;
+  --color-bg-footer-bottom: #161B28;
+  --color-bg-tab-active: #111111;
+  --color-bg-seller-card: #F9F8F6;
+  --color-bg-size-active: #111111;
+  --color-bg-size-inactive: #FFFFFF;
+  --color-bg-skeleton: #EFE9E3;
+  --color-bg-skeleton-shine: #F9F8F6;
+
+  /* Text */
+  --color-text-primary: #111111;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  --color-text-placeholder: #AAAAAA;
+  --color-text-navbar: #333333;
+  --color-text-topbar: #555555;
+  --color-text-footer: #CCCCCC;
+  --color-text-footer-heading: #FFFFFF;
+  --color-text-footer-logo: #FFFFFF;
+  --color-text-tab-active: #FFFFFF;
+  --color-text-tab-inactive: #555555;
+  --color-text-price: #111111;
+  --color-text-original: #AAAAAA;
+  --color-text-size-active: #FFFFFF;
+  --color-text-size-inactive: #333333;
+
+  /* Accent / Red */
+  --color-red-accent: #EE4D2D;
+  --color-red-accent-dark: #D43F1F;
+  --color-red-badge: #EE4D2D;
+  --color-red-sale-bar: #EE4D2D;
+  --color-red-heart: #EE4D2D;
+  --color-red-tab-line: #EE4D2D;
+  --color-red-timer-bg: #333333;
+
+  /* Borders */
+  --color-border-card: #EEEEEE;
+  --color-border-input: #DDDDDD;
+  --color-border-category: #E8E8E8;
+  --color-border-divider: #F0F0F0;
+  --color-border-size: #DDDDDD;
+  --color-border-footer: #2A2F3E;
+
+  /* Stars / Ratings */
+  --color-star-filled: #FFAD33;
+  --color-star-empty: #E0E0E0;
+
+  /* Buttons */
+  --color-btn-primary-bg: #111111;
+  --color-btn-primary-text: #FFFFFF;
+  --color-btn-outline-bg: #FFFFFF;
+  --color-btn-outline-border: #CCCCCC;
+  --color-btn-outline-text: #333333;
+
+  /* Product Detail Specific */
+  --color-detail-discount-text: #EE4D2D;
+  --color-detail-savings-text: #26AA99;
+  --color-detail-online-dot: #00C853;
+  --color-detail-verified: #1A73E8;
+
+  /* Shadows */
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-navbar: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-drawer: 0 0 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Base Styles ───────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Open Sans', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #F9F8F6;
+  color: #111111;
+}
+
+/* ── Utility Classes ───────────────────────────────────────────── */
+.font-betania {
+  font-family: 'BetaniaPatmos', serif;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hide scrollbar for flash sale / horizontal scroll areas */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Skeleton shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #EFE9E3 25%, #F9F8F6 50%, #EFE9E3 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
